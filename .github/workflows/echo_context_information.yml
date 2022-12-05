@@ -10,6 +10,9 @@ jobs:
     steps:
       - env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
+          CUSTOM: hello from the env section!
         run: |
-          echo ${{ github.workflow }} initiated by ${{ github.actor }}
+          echo Workflow ${{ github.workflow }} initiated by ${{ github.actor }}
+          echo Workflow $GITHUB_WORKFLOW initiated by $GITHUB_ACTOR
+          echo $CUSTOM
           echo $GITHUB_CONTEXT
