@@ -1,0 +1,11 @@
+name: Echo Context Information
+
+on: workflow_dispatch
+
+jobs:
+  echo-variables:
+    name: Echo context information
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: echo ${{ github.event }}
