@@ -11,4 +11,5 @@ jobs:
       - env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
+          echo ${{ github.workflow }} initiated by ${{ github.actor }}
           echo $GITHUB_CONTEXT
