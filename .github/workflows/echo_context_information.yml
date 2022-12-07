@@ -1,18 +1,19 @@
-name: Echo Context Information
+name: Echo Context Information #Actionsタブに表示されるActionの名前
 
-on: workflow_dispatch
+on: workflow_dispatch #発火される条件
 
-jobs:
-  echo-variables:
-    name: Echo context information
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - env:
+jobs: #並列実行されるjobのMap
+  echo-variables: #job名
+    name: Echo context information #ログに表示されるjob名
+    runs-on: ubuntu-latest #利用するOS
+    timeout-minutes: 3 #実行制限時間
+    steps: #順番に行う処理
+      - env: #環境変数
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-          CUSTOM: hello from the env section!
-        run: |
+          CUSTOM: This is an output example!
+        run: | #コンテナー内に実行するコマンド
+          echo $CUSTOM
           echo Workflow ${{ github.workflow }} initiated by ${{ github.actor }}
           echo Workflow $GITHUB_WORKFLOW initiated by $GITHUB_ACTOR
-          echo $CUSTOM
+          echo ${{ secrets.hello }}
           echo $GITHUB_CONTEXT
